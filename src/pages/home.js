@@ -1,10 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Filter from "../components/filter";
 import panimage from "../vinted-front2.jpg";
+import GlobalContext from "../store/context-store";
 
-const Home = ({ searchStr }) => {
+const Home = () => {
+  
+  //extract searchStr from Context store..
+  const {searchStr} = useContext(GlobalContext)
+  
   //set initial states, offers, offercount and query filters
   const [offers, setOffers] = useState();
   const [offerCount, setOfferCount] = useState();
@@ -40,7 +45,12 @@ const Home = ({ searchStr }) => {
   }, [filters, searchStr]);
 
   return isLoading ? (
-    <div>Fetching data</div>
+     <div className="loading">
+      <img
+        src="https://media.giphy.com/media/PUYgk3wpNk0WA/giphy.gif"
+        alt="Loading"
+      />
+    </div>
   ) : (
     <div>
       <Filter

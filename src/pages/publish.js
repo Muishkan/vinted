@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import GlobalContext from "../store/context-store";
 
-const Publish = ({ token }) => {
+const Publish = () => {
+
+  //import token from global context store..
+  const {token} = useContext(GlobalContext);
+
   const [errMessage, seterrMessage] = useState("");
   const [imageFile, setImageFile] = useState({});
 

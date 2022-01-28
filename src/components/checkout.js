@@ -1,18 +1,22 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext} from "react";
 import { useParams } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import StripeForm from "./stripeform";
+import GlobalContext from "../store/context-store";
 
-const Checkout = ({ stripePromise }) => {
+
+const Checkout = () => {
+
+  //extract stripe promise from context store..
+  const {stripePromise} = useContext(GlobalContext);
+
   const { id } = useParams();
 
   const [offer, setOffer] = useState();
   const [isloading, setLoading] = useState(true);
-  const [protection, setProtection] = useState(1.8);
-  const [shipping, setShipping] = useState(2.6);
+  const [protection] = useState(1.8);
+  const [shipping] = useState(2.6);
 
   //Handle payment with stripe..
 
