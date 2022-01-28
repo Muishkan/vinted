@@ -1,11 +1,16 @@
+import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import logo from "../logo.svg";
+import GlobalContext from "../store/context-store";
 
-const Header = ({ user, logout, setSearchStr }) => {
+const Header = () => {
+
+  //extract global state from context store..
+  const {user, setSearchStr, logout} = useContext(GlobalContext);
+  
   const navigate = useNavigate();
-
   //check if user is logged-in
   const handlePublish = () => {
     if (user) {

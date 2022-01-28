@@ -1,14 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import GlobalContext from "../store/context-store";
 
-const Signup = ({ setUser }) => {
+
+const Signup = () => {
+
+//extract setUser function from context store
+  const {setUser} = useContext(GlobalContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [phone, setPhone] = useState("");
-  const [userName, setUsername] = useState("");
+  const [userName, setNewUserName] = useState("");
   const [feedback, setFeedback] = useState("");
 
   const navigate = useNavigate();
@@ -59,7 +65,7 @@ const Signup = ({ setUser }) => {
           placeholder="Email"
         />
         <input
-          onChange={(evt) => setUsername(evt.target.value)}
+          onChange={(evt) => setNewUserName(evt.target.value)}
           required
           className="input-txt"
           type="text"

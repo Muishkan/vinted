@@ -1,9 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import GlobalContext from "../store/context-store";
 
-const Login = ({ setUser }) => {
+const Login = () => {
+
+  const {setUser} = useContext(GlobalContext)
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [feedback, setFeedback] = useState("");

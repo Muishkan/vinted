@@ -4,8 +4,8 @@ import { useParams, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Product = () => {
-  const { id } = useParams();
 
+  const { id } = useParams();
   const [offer, setOffer] = useState();
   const [isloading, setLoading] = useState(true);
 
@@ -27,7 +27,12 @@ const Product = () => {
   }, [id]);
 
   return isloading ? (
-    <div>Loading</div>
+     <div className="loading">
+      <img
+        src="https://media.giphy.com/media/PUYgk3wpNk0WA/giphy.gif"
+        alt="Loading"
+      />
+    </div>
   ) : (
     <div className="product">
       <div className=" product-card">
