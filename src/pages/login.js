@@ -19,7 +19,7 @@ const Login = () => {
     event.preventDefault();
     try {
       const user = await axios.post(
-        "https://myvintedapi.herokuapp.com/user/login",
+        `${process.env.REACT_APP_API}/user/login`,
         { email: email, password: password }
       );
       if (user.data.token) {

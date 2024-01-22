@@ -28,7 +28,7 @@ const Signup = () => {
         );
       } else {
         const user = await axios.post(
-          "https://mymarvelapi.herokuapp.com/user/signup",
+          `${process.env.REACT_APP_API}/user/signup`,
           {
             email: email,
             username: userName,

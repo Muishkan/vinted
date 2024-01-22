@@ -28,19 +28,25 @@ const Home = () => {
       const sortorder = ascending ? "asc" : "desc";
 
       // Get number of document that matches query.. for pagination..
-      const offerCount = await axios(
-        `https://myvintedapi.herokuapp.com/offers?title=${searchStr}&priceMin=${range[0]}&priceMax=${range[1]}&count=count`
-      );
+      try {
+              const offerCount = await axios(
+                `${process.env.REACT_APP_API}/offers?title=${searchStr}&priceMin=${range[0]}&priceMax=${range[1]}&count=count`
+              );
 
-      //Execute query..
-      const offerData = await axios(
-        `https://myvintedapi.herokuapp.com/offers?title=${searchStr}&priceMin=${range[0]}&priceMax=${range[1]}&sortby=product_${sortBy}&sortorder=${sortorder}&results_per_page=${resultsPerPage}&page=${page}`
-      );
+              //Execute query..
+              const offerData = await axios(
+                `${process.env.REACT_APP_API}/offers?title=${searchStr}&priceMin=${range[0]}&priceMax=${range[1]}&sortby=product_${sortBy}&sortorder=${sortorder}&results_per_page=${resultsPerPage}&page=${page}`
+              );
 
-      setOffers(offerData.data);
-      console.log(offerData.data);
-      setOfferCount(offerCount.data.count);
-      setLoading(false);
+              setOffers(offerData.data);
+              setOfferCount(offerCount.data.count);
+              setLoading(false);
+
+      } catch (err) {
+        console.log(err.message)
+
+      }
+
     })();
   }, [filters, searchStr]);
 

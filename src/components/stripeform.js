@@ -21,7 +21,7 @@ const StripeForm = ({ userID, productID }) => {
     const stripeToken = stripeResponse.token.id;
 
     const response = await axios.post(
-      "https://myvintedapi.herokuapp.com/offer/pay",
+      `${process.env.REACT_APP_API}/offer/pay`,
       {
         stripeToken,
         productID,
@@ -36,17 +36,17 @@ const StripeForm = ({ userID, productID }) => {
 
   return !completed ? (
     <>
-      <form className="stripe-form" action="" onSubmit={handlePayment}>
-        <CardElement className="card-stripe" />
-        <div className="btn-pay">
-          <button className="btn-checkout" type="submit" className="btn-login">
-            Payer <FontAwesomeIcon icon="shopping-cart" />
+      <form className='stripe-form' action='' onSubmit={handlePayment}>
+        <CardElement className='card-stripe' />
+        <div className='btn-pay'>
+          <button className='btn-checkout btn-login' type='submit' >
+            Payer <FontAwesomeIcon icon='shopping-cart' />
           </button>
         </div>
       </form>
     </>
   ) : (
-    <p className="newsletter">{feedback}</p>
+    <p className='newsletter'>{feedback}</p>
   );
 };
 

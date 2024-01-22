@@ -13,9 +13,7 @@ const Product = () => {
   useEffect(() => {
     let active = true;
     (async () => {
-      const offerData = await axios(
-        `https://myvintedapi.herokuapp.com/offer/${id}`
-      );
+      const offerData = await axios(`${process.env.REACT_APP_API}/offer/${id}`);
       if (active) {
         setOffer(offerData.data);
         setLoading(false);

@@ -27,7 +27,7 @@ const Publish = () => {
 
     try {
       const response = await axios.post(
-        "https://myvintedapi.herokuapp.com/offer/publish",
+        `${process.env.REACT_APP_API}/offer/publish`,
         offerData,
         {
           headers: {
