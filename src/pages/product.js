@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SEO from "../components/seo";
 
 const Product = () => {
 
@@ -25,24 +26,35 @@ const Product = () => {
   }, [id]);
 
   return isloading ? (
-     <div className="loading">
+    <div className='loading'>
       <img
-        src="https://media.giphy.com/media/PUYgk3wpNk0WA/giphy.gif"
-        alt="Loading"
+        src='https://media.giphy.com/media/PUYgk3wpNk0WA/giphy.gif'
+        alt='Loading'
       />
     </div>
   ) : (
-    <div className="product">
-      <div className=" product-card">
-        <div className="product-image">
+    <div className='product'>
+      <SEO
+        title={`Vinted by Masood: ${offer.product_description}`}
+        page={`${offer.product_description}`}
+        description={offer.product_description}
+        keywords={`Vinted, Le Reacteur, Paris`}
+        robots={`index, follow`}
+        link={`https://vinted.cloudi.fr/`}
+        type='website'
+        creator='Masood AHMAD'
+        image='https://vinted.cloudi.fr/logo192.png'
+      />
+      <div className=' product-card'>
+        <div className='product-image'>
           <img
-            className="product-image"
+            className='product-image'
             src={offer.product_image.secure_url}
-            alt=""
+            alt=''
           />
         </div>
 
-        <div className="product-info">
+        <div className='product-info'>
           <div>{offer.product_price} €</div>
           <ul>
             {/* Iterate over Product details array */}
@@ -51,7 +63,7 @@ const Product = () => {
               // Over object contains a single key, otherwise a map should be considered
               const key = keys[0];
               return (
-                <li className="product-keys" key={index}>
+                <li className='product-keys' key={index}>
                   <span>{key.toLocaleUpperCase()}</span>
                   <span>{elem[key].toLocaleUpperCase()}</span>
                 </li>
@@ -59,9 +71,9 @@ const Product = () => {
             })}
           </ul>
           <div>{offer.product_description}</div>
-          <Link className="btn-checkout" to={`/offer/checkout/${id}`}>
-            <button type="submit" className="btn-login">
-              Acheter <FontAwesomeIcon icon="shopping-cart" />
+          <Link className='btn-checkout' to={`/offer/checkout/${id}`}>
+            <button type='submit' className='btn-login'>
+              Acheter <FontAwesomeIcon icon='shopping-cart' />
             </button>
           </Link>
         </div>

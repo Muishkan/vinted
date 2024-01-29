@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import GlobalContext from "../store/context-store";
+import SEO from "../components/seo";
 
 const Publish = () => {
 
@@ -43,69 +44,80 @@ const Publish = () => {
   };
 
   return (
-    <div className="form-pan">
-      <form id="offer-form" onSubmit={handlePublish}>
-        <div id="offer-label">Publier une annonce</div>
+    <div className='form-pan'>
+      <SEO
+        title='Vinted by Masood: Publish your add'
+        page='Publish your add'
+        description='Vinted project by Masood @ LE REACTEUR, PARIS'
+        keywords={`Vinted, Le Reacteur, Paris`}
+        robots={`index, follow`}
+        link={`https://vinted.cloudi.fr/`}
+        type='website'
+        creator='Masood AHMAD'
+        image='https://vinted.cloudi.fr/logo192.png'
+      />
+      <form id='offer-form' onSubmit={handlePublish}>
+        <div id='offer-label'>Publier une annonce</div>
         <div>
-          <label for="title">Title</label>
-          <input className="input-txt" type="text" name="title" id="title" />
+          <label for='title'>Title</label>
+          <input className='input-txt' type='text' name='title' id='title' />
         </div>
 
         <div>
-          <label for="description">Description</label>
+          <label for='description'>Description</label>
           <input
-            className="input-txt"
-            type="text"
-            name="description"
-            id="description"
+            className='input-txt'
+            type='text'
+            name='description'
+            id='description'
           />
         </div>
         <div>
-          <label for="price">Price</label>
-          <input className="input-txt" type="number" name="price" id="price" />
+          <label for='price'>Price</label>
+          <input className='input-txt' type='number' name='price' id='price' />
         </div>
 
         <div>
-          <label for="condition">Condition</label>
+          <label for='condition'>Condition</label>
           <input
-            className="input-txt"
-            type="text"
-            name="condition"
-            id="condition"
+            className='input-txt'
+            type='text'
+            name='condition'
+            id='condition'
           />
         </div>
 
         <div>
-          <label for="city">City</label>
-          <input className="input-txt" type="text" name="city" id="city" />
+          <label for='city'>City</label>
+          <input className='input-txt' type='text' name='city' id='city' />
         </div>
 
         <div>
-          <label for="brand">Brand</label>
-          <input className="input-txt" type="text" name="brand" id="brand" />
+          <label for='brand'>Brand</label>
+          <input className='input-txt' type='text' name='brand' id='brand' />
         </div>
 
         <div>
-          <label for="size">Size</label>
-          <input className="input-txt" type="text" name="size" id="size" />
+          <label for='size'>Size</label>
+          <input className='input-txt' type='text' name='size' id='size' />
         </div>
 
         <div>
-          <label for="color">Couleur</label>
-          <input className="input-txt" type="text" name="color" id="color" />
+          <label for='color'>Couleur</label>
+          <input className='input-txt' type='text' name='color' id='color' />
         </div>
 
         <div>
-          <label for="picture">Photo</label>
+          <label for='picture'>Photo</label>
           <input
-            type="file"
-            name="picture"
-            id="picture"
+            type='file'
+            name='picture'
+            id='picture'
             onChange={(event) => setImageFile(event.target.files[0])}
           />
         </div>
 
-        <button id="btn-publish" className="btn-login" type="submit">
+        <button id='btn-publish' className='btn-login' type='submit'>
           Publier l'annonce
         </button>
       </form>

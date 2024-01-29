@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import GlobalContext from "../store/context-store";
+import SEO from "../components/seo";
 
 
 const Signup = () => {
@@ -50,64 +51,75 @@ const Signup = () => {
   };
 
   return (
-    <div className="form-pan">
-      <form onSubmit={handleSignup} className="login-form" action="">
+    <div className='form-pan'>
+      <SEO
+        title='Vinted by Masood: Sign up'
+        page='Sign up'
+        description='Vinted project by Masood @ LE REACTEUR, PARIS'
+        keywords={`Vinted, Le Reacteur, Paris`}
+        robots={`index, follow`}
+        link={`https://vinted.cloudi.fr/`}
+        type='website'
+        creator='Masood AHMAD'
+        image='https://vinted.cloudi.fr/logo192.png'
+      />
+      <form onSubmit={handleSignup} className='login-form' action=''>
         <div>
-          S'inscrire <FontAwesomeIcon icon="user-plus" />
+          S'inscrire <FontAwesomeIcon icon='user-plus' />
         </div>
         <input
           onChange={(evt) => setEmail(evt.target.value)}
-          className="input-txt"
+          className='input-txt'
           required
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Email"
+          type='email'
+          name='email'
+          id='email'
+          placeholder='Email'
         />
         <input
           onChange={(evt) => setNewUserName(evt.target.value)}
           required
-          className="input-txt"
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Username"
+          className='input-txt'
+          type='text'
+          name='username'
+          id='username'
+          placeholder='Username'
         />
         <input
           onChange={(evt) => setPhone(evt.target.value)}
           required
-          minLength="8"
-          className="input-txt"
-          type="phone"
-          name="phone"
-          id="phone"
-          placeholder="Téléphone"
+          minLength='8'
+          className='input-txt'
+          type='phone'
+          name='phone'
+          id='phone'
+          placeholder='Téléphone'
         />
         <input
           onChange={(evt) => setPassword(evt.target.value)}
           required
-          minLength="8"
-          className="input-txt"
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Mot de passe"
+          minLength='8'
+          className='input-txt'
+          type='password'
+          name='password'
+          id='password'
+          placeholder='Mot de passe'
         />
         <input
           onChange={(evt) => setPassword2(evt.target.value)}
           required
-          minLength="8"
-          className="input-txt"
-          type="password"
-          name="password2"
-          id="password2"
-          placeholder="Confirmer votre mot de passe"
+          minLength='8'
+          className='input-txt'
+          type='password'
+          name='password2'
+          id='password2'
+          placeholder='Confirmer votre mot de passe'
         />
-        <div className="newsletter">
+        <div className='newsletter'>
           <p>{feedback}</p>
         </div>
 
-        <button className="btn-login">S'inscrire</button>
+        <button className='btn-login'>S'inscrire</button>
       </form>
     </div>
   );
